@@ -53,7 +53,7 @@
 		
 
         //  .. CartoDB Positron
-        var imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+        var imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{ attribution: "Leventhal Map & Education Center at the Boston Public Library"});
 		var streets = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png');
         var magbase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
         // Overlay layers (TMS)
@@ -105,18 +105,7 @@
         };
         title.addTo(map);
 
-        // Note
-        var src = '<a href="https://collections.leventhalmap.org/">Norman B. Leventhal Map & Education Center at the Boston Public Library</a>';
-        var title = L.control({position: 'bottomleft'});
-        title.onAdd = function(map) {
-            this._div = L.DomUtil.create('div', 'ctl src');
-            this.update();
-            return this._div;
-        };
-        title.update = function(props) {
-            this._div.innerHTML = src;
-        };
-        title.addTo(map);
+
 		
 		var baseMaps = {
 			"Street view": streets,
