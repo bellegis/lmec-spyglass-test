@@ -3,7 +3,7 @@
           <head>
             <meta charset="utf-8">
             <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-            <title>test spy</title>
+            <title>spyglass test</title>
 
             <!-- Leaflet -->
 			<link href="lib/leaflet/leaflet.css" rel="stylesheet">
@@ -54,6 +54,7 @@
 
         //  .. CartoDB Positron
         var imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+		var streets = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png');
         var magbase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
         // Overlay layers (TMS)
         var lyr = L.tileLayer('https://geo.leventhalmap.org/maps/tile/5031/{z}/{x}/{y}.png', { opacity: 0.7, attribution: ""});
@@ -100,7 +101,7 @@
             return this._div;
         };
         title.update = function(props) {
-            this._div.innerHTML = "test spy";
+            this._div.innerHTML = "spyglass test";
         };
         title.addTo(map);
 
@@ -116,6 +117,12 @@
             this._div.innerHTML = src;
         };
         title.addTo(map);
+		
+		var baseMaps = {
+			"Street view": streets,
+			"Satellite imagery": imagery
+		};
+		L.control.layers(baseMaps, null, {collapsed:false}).addTo(map);
 
 
 
